@@ -12,7 +12,7 @@ public class Results {
 		  }
 		
 		PointsTotal = Points.GetTotalPoints(ResultList);
-		System.out.println("Results:" + ResultList + "PointsTotal" + PointsTotal);
+		System.out.println("Results:" + ResultList + "\n" + "PointsTotal: " + PointsTotal);
 	}
 public void setStringList(List<String> stringList)
 	{
@@ -24,7 +24,7 @@ public List<String> getStringList()
 	}
 public int getListCount() 
 	{
-    	return this.ResultList.size();
+    	return Results.ResultList.size();
 	}
 
 public class x {

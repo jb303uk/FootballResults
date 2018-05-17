@@ -15,33 +15,41 @@ public static int GetTotalPoints(List<String> Results)
 }
 private static int GetGamePoints(String Result){
 	int GamePoints = 0;
-	int HomeScore = 0;
-	int AwayScore = 0;
-	String HomeScoreString = null;
-	String AwayScoreString = null;
+	int myScore = 0;
+	int theirScore = 0;
+	String firstTeam = null;
+	String secondTeam = null;
 	String HomeOrAway = null;
 	
 	String[] ResultString = Result.split("-");
-	HomeScoreString = ResultString[0];
-	AwayScoreString = ResultString[1];
+	firstTeam = ResultString[0];
+	secondTeam = ResultString[1];
 
-	AwayScoreString = AwayScoreString.substring(0,AwayScoreString.length()-1);  //Order of scores indicates result ??
-	HomeOrAway = "H";
-
-	System.out.println("HomeScoreString:" + HomeScoreString);
-	System.out.println("AwayScoreString:" + AwayScoreString);
-	
-	HomeScore = Integer.parseInt(HomeScoreString);
-	AwayScore = Integer.parseInt(AwayScoreString);
-
-	if (HomeScore < AwayScore) GamePoints = 3;
+	secondTeam = secondTeam.substring(0,secondTeam.length()-1);  //Order of scores indicates result ??
+	HomeOrAway = Result.substring(Result.length() - 1);
 	
 	switch (HomeOrAway) {
-    case ("H"):  GamePoints += 1;
-             break;     
+    case ("H"): 
+		myScore = Integer.parseInt(secondTeam);
+		theirScore = Integer.parseInt(firstTeam);
+		break;   
+    case ("A"):
+		myScore = Integer.parseInt(firstTeam);
+		theirScore = Integer.parseInt(secondTeam);
+		break;	
     default: GamePoints = 0;
-             break;
-}
+	}
+	
+	if (myScore < theirScore) {
+		GamePoints = 3;
+	}
+	else if (myScore == theirScore){
+		GamePoints = 1;
+	}
+	
+	System.out.println("From:" + Result);
+	System.out.println("RCDTS Points:" + GamePoints);
+	System.out.println("=====================================");
 	return GamePoints;
 }
 }

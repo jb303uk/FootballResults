@@ -24,4 +24,70 @@ public void ScoresCount()
 		assertEquals(4,jbScores.getListCount());
 
 	}
+@Test
+public void HomeWinPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("2-1H");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(3,Points.GetTotalPoints(testScoresData));
+
+	}
+@Test
+public void HomeDefeatPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("1-2H");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(0,Points.GetTotalPoints(testScoresData));
+
+	}
+@Test
+public void AwayDefeatPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("2-1A");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(0,Points.GetTotalPoints(testScoresData));
+
+	}
+@Test
+public void AwayWinPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("1-2A");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(3,Points.GetTotalPoints(testScoresData));
+
+	}
+@Test
+public void AwayDrawPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("1-1A");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(1,Points.GetTotalPoints(testScoresData));
+
+	}
+@Test
+public void HomeDrawPointsCheck()
+{
+		List<String> testScoresData = new ArrayList<String>();
+		testScoresData.add("1-1H");
+		
+		Results jbScores = new Results();
+		jbScores.setStringList(testScoresData);
+		assertEquals(1,Points.GetTotalPoints(testScoresData));
+
+	}
 }
