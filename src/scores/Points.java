@@ -22,12 +22,18 @@ private static int GetGamePoints(String Result){
 	String HomeOrAway = null;
 	
 	String[] ResultString = Result.split("-");
-	firstTeam = ResultString[0];
-	secondTeam = ResultString[1];
+		try	{
+			firstTeam = ResultString[0];
+			secondTeam = ResultString[1];
+			}
+		catch (ArrayIndexOutOfBoundsException err)
+		{
+			throw new ArrayIndexOutOfBoundsException("Please use format such as '1-1A' as program arguments.");
+		}
+		secondTeam = secondTeam.substring(0,secondTeam.length()-1);
+		HomeOrAway = Result.substring(Result.length() - 1);
 
-	secondTeam = secondTeam.substring(0,secondTeam.length()-1);  //Order of scores indicates result ??
-	HomeOrAway = Result.substring(Result.length() - 1);
-	
+try{	
 	switch (HomeOrAway) {
     case ("H"): 
 		myScore = Integer.parseInt(secondTeam);
@@ -37,19 +43,21 @@ private static int GetGamePoints(String Result){
 		myScore = Integer.parseInt(firstTeam);
 		theirScore = Integer.parseInt(secondTeam);
 		break;	
-    default: GamePoints = 0;
+    default:
+    	throw new RuntimeException ("Unable to find if game is Home or Away");
 	}
-	
+}
+catch (NumberFormatException err)
+{
+	throw new NumberFormatException("Unable to convert score to Number");
+}
+
 	if (myScore < theirScore) {
 		GamePoints = 3;
 	}
 	else if (myScore == theirScore){
 		GamePoints = 1;
 	}
-	
-	System.out.println("From:" + Result);
-	System.out.println("RCDTS Points:" + GamePoints);
-	System.out.println("=====================================");
 	return GamePoints;
 }
 }

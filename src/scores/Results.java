@@ -10,9 +10,14 @@ public class Results {
 		for (String score : args) {
 			ResultList.add(score);
 		  }
-		
-		PointsTotal = Points.GetTotalPoints(ResultList);
-		System.out.println("Results:" + ResultList + "\n" + "PointsTotal: " + PointsTotal);
+		try{
+			PointsTotal = Points.GetTotalPoints(ResultList);
+			System.out.println("Input (Results):\t" + ResultList + "\n" + "Output (PointsTotal):\t" + PointsTotal);
+		}
+		catch (Exception err)
+		{
+		    System.out.println("Error Found:\n" + err.getMessage());
+		}
 	}
 public void setStringList(List<String> stringList)
 	{
@@ -26,10 +31,6 @@ public int getListCount()
 	{
     	return Results.ResultList.size();
 	}
-
-public class x {
-
-}
 }
 
 

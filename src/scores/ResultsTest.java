@@ -90,4 +90,44 @@ public void HomeDrawPointsCheck()
 		assertEquals(1,Points.GetTotalPoints(testScoresData));
 
 	}
+@Test
+public void InvalidScoreCheck() {
+    	List<String> testScoresData = new ArrayList<String>();
+    	testScoresData.add("A-1H");	
+    	Results jbScores = new Results();
+    	jbScores.setStringList(testScoresData);	
+    try {
+    	Points.GetTotalPoints(testScoresData);
+        fail("Expected NumberFormatException error but none detected");
+    } catch (NumberFormatException e) {
+        // Exception not handled to pass JUnit test
+    }  	
+}
+@Test
+public void InvalidHomeOrAwayIdentifier() {
+    	List<String> testScoresData = new ArrayList<String>();
+    	testScoresData.add("1-1");	
+    	Results jbScores = new Results();
+    	jbScores.setStringList(testScoresData);	
+    try {
+    	Points.GetTotalPoints(testScoresData);
+        fail("Expected RuntimeException error but none detected");
+    } catch (RuntimeException e) {
+        // Exception not handled to pass JUnit test
+    }  	
+}
+@Test
+public void InvalidScoreArrayIdentifier() {
+    	List<String> testScoresData = new ArrayList<String>();
+    	testScoresData.add("1_1H");	
+    	Results jbScores = new Results();
+    	jbScores.setStringList(testScoresData);	
+    try {
+    	Points.GetTotalPoints(testScoresData);
+        fail("Expected ArrayIndexOutOfBoundsException error but none detected");
+    } catch (ArrayIndexOutOfBoundsException e) {
+        // Exception not handled to pass JUnit test
+    }  	
+}
+
 }
