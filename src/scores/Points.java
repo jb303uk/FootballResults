@@ -34,17 +34,16 @@ private static int GetGamePoints(String Result){
 		HomeOrAway = Result.substring(Result.length() - 1);
 
 try{	
-	switch (HomeOrAway) {
-    case ("H"): 
+	if (HomeOrAway.equalsIgnoreCase("H")) {
 		myScore = Integer.parseInt(secondTeam);
 		theirScore = Integer.parseInt(firstTeam);
-		break;   
-    case ("A"):
+	}
+	if (HomeOrAway.equalsIgnoreCase("A")) {
 		myScore = Integer.parseInt(firstTeam);
 		theirScore = Integer.parseInt(secondTeam);
-		break;	
-    default:
-    	throw new RuntimeException ("Unable to find if game is Home or Away");
+	}
+	if (!HomeOrAway.equalsIgnoreCase("A") && !HomeOrAway.equalsIgnoreCase("H")) {
+		throw new RuntimeException("Unable to find if game is Home or Away");
 	}
 }
 catch (NumberFormatException err)
