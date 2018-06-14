@@ -17,6 +17,7 @@ private static int GetGamePoints(String Result){
 	int GamePoints = 0;
 	int myScore = 0;
 	int theirScore = 0;
+	int bonusPoint = 0;
 	String firstTeam = null;
 	String secondTeam = null;
 	String HomeOrAway = null;
@@ -57,6 +58,10 @@ catch (NumberFormatException err)
 	else if (myScore == theirScore){
 		GamePoints = 1;
 	}
-	return GamePoints;
+	
+	if(myScore		> 2){bonusPoint=1;}else {bonusPoint=0;} 	
+	if(theirScore 	> 2){bonusPoint=1;}else {bonusPoint=0;} 
+	
+	return GamePoints+bonusPoint;
 }
 }
