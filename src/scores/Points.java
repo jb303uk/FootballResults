@@ -36,12 +36,12 @@ private static int GetGamePoints(String Result){
 
 try{	
 	if (HomeOrAway.equalsIgnoreCase("H")) {
-		myScore = Integer.parseInt(secondTeam);
-		theirScore = Integer.parseInt(firstTeam);
+		myScore =  Integer.parseInt(firstTeam);
+		theirScore = Integer.parseInt(secondTeam);
 	}
 	if (HomeOrAway.equalsIgnoreCase("A")) {
-		myScore = Integer.parseInt(firstTeam);
-		theirScore = Integer.parseInt(secondTeam);
+		myScore = Integer.parseInt(secondTeam);
+		theirScore = Integer.parseInt(firstTeam);
 	}
 	if (!HomeOrAway.equalsIgnoreCase("A") && !HomeOrAway.equalsIgnoreCase("H")) {
 		throw new RuntimeException("Unable to find if game is Home or Away");
@@ -52,15 +52,14 @@ catch (NumberFormatException err)
 	throw new NumberFormatException("Unable to convert score to Number");
 }
 
-	if (myScore < theirScore) {
+	if (myScore > theirScore) {
 		GamePoints = 3;
 	}
 	else if (myScore == theirScore){
 		GamePoints = 1;
 	}
 	
-	if(myScore		> 2){bonusPoint=1;}else {bonusPoint=0;} 	
-	if(theirScore 	> 2){bonusPoint=1;}else {bonusPoint=0;} 
+	if(myScore > 2){bonusPoint=1;}
 	
 	return GamePoints+bonusPoint;
 }
