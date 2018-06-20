@@ -25,6 +25,7 @@ public static String GetBestResult(List<String> Results)
 		resultBean = returnResultBeanFromString(resultString);
 		resultBeanList.add(resultBean);
 	  }
+	//BestResult = resultBeanList.stream().filter(x -> x.equals(x));
 	return BestResult;
 	
 }
